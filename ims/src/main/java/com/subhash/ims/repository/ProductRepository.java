@@ -11,6 +11,9 @@ import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
+
+    Optional<Product> findById(Long id);
+
     Optional<Product> findBySku(String sku);
 
     Optional<Product> findByBarcode(String barcode);
@@ -28,4 +31,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findByNameContainingIgnoreCase(String keyword);
 
     List<Product> findByCategoryIdAndStatus(Long categoryId, ProductStatus status);
+
+    List<Product> findByBrandContainingIgnoreCase(String brand);
 }
